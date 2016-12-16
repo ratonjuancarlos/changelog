@@ -1,0 +1,23 @@
+{
+  "name": "changelog",
+  "version": "1.0.0",
+  "description": "changelog for git",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ratonjuancarlos/changelog.git"
+  },
+  "keywords": [
+    "git",
+    "chamgelog"
+  ],
+  "author": "pablo H",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ratonjuancarlos/changelog/issues"
+  },
+  "homepage": "https://github.com/ratonjuancarlos/changelog#readme"
+}
