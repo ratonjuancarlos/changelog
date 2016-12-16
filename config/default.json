@@ -88,7 +88,7 @@
             }
         ],
         "prefixSeparator": "/",
-        "projects": [
+        "project": [
             {
                 "name": "V5X",
                 "value": "V5X"

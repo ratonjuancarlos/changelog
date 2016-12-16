@@ -30,7 +30,7 @@ inquirer.prompt([
     type: 'list',
     name: 'project',
     message: 'Project?',
-    choices: config.get('config.projects'),
+    choices: config.get('config.project'),
     validate: function (answer) {
       if (answer.length < 1) {
         return 'Debe elegir al menos una opcion.';
