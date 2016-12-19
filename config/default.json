@@ -30,8 +30,8 @@
             "logDateFormat":"%d-%m-%Y",
             "logSince":"2.months",
             "logGrep":[
-                "branc",
-                "ingore"
+                "into develop",
+                "Merged in"
             ]
         },
         "urlBugs": [{
@@ -52,6 +52,11 @@
             "value": "fix",
             "prefix": "fix",
             "name": "Bug Fix"
+        }, {
+            "order": "0",
+            "value": "feature",
+            "prefix": "feature",
+            "name": "Feature"
         }, {
             "order": "0",
             "value": "feat",
