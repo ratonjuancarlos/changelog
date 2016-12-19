@@ -2,7 +2,6 @@
 
 var inquirer = require('inquirer');
 var shell = require('shelljs');
-var config = require('config');
 var manageBranch = require('./lib/manageBranch');
 var types  = require('./lib/promptTypes');
 
