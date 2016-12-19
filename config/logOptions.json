@@ -1,0 +1,22 @@
+{
+    "date": "%ad",
+    "commit": "%H",
+    "abbreviated_commit": "%h",
+    "tree": "%T",
+    "abbreviated_tree": "%t",
+    "parent": "%P",
+    "abbreviated_parent": "%p",
+    "refs": "%D",
+    "subject": "%s",
+    "sanitized_subject_line": "%f",
+    "commit_notes": "%N",
+    "verification_flag": "%G ? ",
+    "signer": "%GS",
+    "signer_key": "%GK",
+    "author_name": "%aN",
+    "author_email": "%aE",
+    "author_date": "%aD",
+    "commiter_name": "%cN",
+    "commiter_email": "%cE",
+    "commiter_date": "%cD"
+}
