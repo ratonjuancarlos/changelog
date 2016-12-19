@@ -100,6 +100,44 @@
         ],
         "issue": "",
         "numberSeparator": "-",
-        "templateBranchName": ["prefix", "prefixSeparator", "project", "commonSeparator", "issue", "commonSeparator", "description"]
+        "templateBranchName": ["prefix", "prefixSeparator", "project", "commonSeparator", "issue", "commonSeparator", "description"],
+        "templateBranchCreate": [
+            {
+                "name": "prefix",
+                "type":"list",
+                "mandatory": true,
+                "text":"Prefix"
+            },
+            {
+                "name": "prefixSeparator",
+                "type":"separator"
+            },
+            {
+                "name": "project",
+                "type":"list",
+                "mandatory": true,
+                "text":"Project"
+            },
+            {
+                "name": "commonSeparator",
+                "type":"separator"
+            },
+            {
+                "name": "issue",
+                "type":"inputNumber",
+                "mandatory": true,
+                "text":"Issue Number"
+            },
+            {
+                "name": "commonSeparator",
+                "type":"separator"
+            },
+            {
+                "name": "description",
+                "type":"inputText",
+                "mandatory": true,
+                "text":"Description"
+            }
+        ]
     }
 }
