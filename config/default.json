@@ -20,6 +20,7 @@
             "logFormat": [
                 "date",
                 "commit",
+                "abbreviated_commit",
                 "subject",
                 "sanitized_subject_line",
                 "author_name",

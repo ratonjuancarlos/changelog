@@ -10,7 +10,7 @@ const shell = require('shelljs');
 const cmd =  require('./lib/gitLog');
 const createJsonFromLog =  require('./lib/createJsonFromLog');
 const updateFields =  require('./lib/updateFields');
-// const commitItem =  require('./lib/commitItem');
+const commitItem =  require('./lib/commitItem');
 const styles =  require('./lib/styles');
 // const createJsonFromLog =  require('./lib/createJsonFromLog');
 
