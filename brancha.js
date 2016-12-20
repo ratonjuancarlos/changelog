@@ -3,58 +3,49 @@
 var inquirer = require('inquirer');
 var shell = require('shelljs');
 var manageBranch = require('./lib/manageBranch');
-var types  = require('./lib/promptTypes');
+var createBranchName = require('./lib/createBranchName');
+var types = require('./lib/promptTypes');
+var config = require('config');
+var pjson = require('./package.json');
+var program = require('commander');
 
-var indexFlag = '--create';
-
-process.argv.forEach(function (val, index, array) {
-  if (!val.indexOf('--') < 0  ) {
-    indexFlag = val.replace('--', '');
-  }
-});
-
-
-// [
-//     {"name": "prefix", "type":"list", "mandatory": true, "text":"Prefix"},
-//     {"name": "prefixSeparator", "type":"separator"},
-//     {"name": "project", "type":"list", "mandatory": true, "text":"Project"},
-//     {"name": "commonSeparator", "type":"separator"},
-//     {"name": "issue", "type":"inputNumber", "mandatory": true, "text":"Issue Number"},
-//     {"name": "commonSeparator", "type":"separator"},
-//     {"name": "description", "type":"inputText", "mandatory": true, "text":"Description"}
-// ]
+var chalk = require('chalk');
+ 
 
 
-var templateBranchCreate = config.get(`config.templateBranchCreate`);
-
-var inquirerObject = templateBranchCreate.map( section => {
-  if (section.type !== 'separator' && types[section.type] !== undefined) {
-    return types[section.type](section.name, section.text, section.mandatory)
-  }
-
-})
-
-console.log(inquirerObject)
-
-inquirer.prompt([
-  types.list('prefix', 'Branch Type', true),
-  types.list('project', 'Project', true),
-  types.inputNumber('issue', 'Issue Number', true),
-  types.inputText('description', 'Description', true, (answer)=>answer.replace(/["']/gi, '').replace(/[\s]/gi, '-')),
-]).then(function (answers) {
-  var bootstrapBranch = manageBranch(indexFlag);
-  // var branchName = `${answers.prefix}/${answers.project}-${answers.issue}-${answers.description}`;
-  var branchName = templateBranchCreate.map( section => {
-    if (section.type === 'separator') {
-      return config.get(`config[${section.name}]`)
-    }
-
-    return answers[section.name];
-  }).join('');
-
-  console.log(branchName)
+program
+    .version(pjson.version)
+    .usage('[options] <string>')
+    .option('-c, --create', `Create a new branch from ${config.get('config.createBranchFrom.remote')}/${config.get('config.createBranchFrom.branch')}`)
+    .option('-r, --rename', 'Rename current branch')
+    .option('-d, --delete <string>', 'Delete branch <string>')
+    .option('-s, --search [string]', 'Show local branches or search [string] in local branches', '')
+    .parse(process.argv);
 
 
+console.log(program)
 
-  shell.exec(`${bootstrapBranch}${branchName}`, {silent:true}).stdout
-});
+
+if (program.create) return shell.exec(`${manageBranch('create')}${createBranchName()}`, { silent: true }).stdout
+if (program.rename) return shell.exec(`${manageBranch('rename')}${createBranchName()}`, { silent: true }).stdout
+
+switch(program.search) {
+    case '':
+      shell.exec(`git branch`).stdout
+      break;
+    case undefined:
+      console.error('no command given!');
+      process.exit(1);
+    default:
+      shell.exec(`git branch | grep ${program.search}`).stdout
+}
+
+switch(program.delete) {
+    case undefined:
+      console.error('no target branch to delete!');
+      process.exit(1);
+    default:
+      shell.exec(`${manageBranch('delete')}${program.delete}`, { silent: true }).stdout
+}
+
+

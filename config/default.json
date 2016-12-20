@@ -43,6 +43,10 @@
             "env": "develop",
             "name": "develop"
         },
+        "createBranchFrom": {
+            "remote": "origin",
+            "branch": "develop"
+        },
         "removeFromCommit": [
             "Merged in ",
             "Merge branch ",
