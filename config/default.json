@@ -52,6 +52,12 @@
             "Merge branch ",
             " into develop"
         ],
+        "prefixSynonymous":[
+            "festure",
+            "enhacement",
+            "enhancemet",
+            "enhancemen"
+        ],
         "prefix": [{
             "order": "0",
             "value": "fix",
@@ -64,9 +70,14 @@
             "name": "Feature"
         }, {
             "order": "0",
+            "value": "enhancement",
+            "prefix": "enhancement",
+            "name": "Enhancement"
+        }, {
+            "order": "0",
             "value": "feat",
             "prefix": "feat",
-            "name": "Feature"
+            "name": "Feat"
         }, {
             "order": "0",
             "value": "docs",
