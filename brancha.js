@@ -22,8 +22,7 @@ program
     .option('-s, --search [string]', 'Show local branches or search [string] in local branches', '')
     .parse(process.argv);
 
-
-if (program.create) return shell.exec(`${manageBranch('create')}${createBranchName()}`, { silent: true }).stdout
-if (program.rename) return shell.exec(`${manageBranch('rename')}${createBranchName()}`, { silent: true }).stdout
+if (program.create) return createBranchName('create')
+if (program.rename) return createBranchName('rename')
 if (program.search) return shell.exec(`git branch --list "*${program.search}*"`).stdout
-if (program.delete) shell.exec(`${manageBranch('delete')}${program.delete}`, { silent: true }).stdout
+if (program.delete) return shell.exec(`${manageBranch('delete')}${program.delete}`, { silent: true }).stdout

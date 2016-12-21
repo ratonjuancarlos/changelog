@@ -165,7 +165,8 @@
                 "name": "description",
                 "type":"inputText",
                 "mandatory": true,
-                "text":"Description"
+                "text":"Description",
+                "filter": true
             }
         ]
     }
