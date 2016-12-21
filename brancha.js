@@ -18,12 +18,12 @@ program
     .version(pjson.version)
     .usage('[options] <string>')
     .option('-c, --create', `Create a new branch from ${config.get('config.createBranchFrom.remote')}/${config.get('config.createBranchFrom.branch')}`)
-    .option('-r, --rename', 'Rename current branch')
-    .option('-d, --delete <string>', 'Delete branch <string>')
-    .option('-s, --search <string>', 'Search <string> in local branches')
-    .option('-b, --branches', 'Show local branches')
-    .option('-D, --delete-bulk <pattern>', 'Bulk delete branches with pattern')
-    .option('-z, --create-commit [message]', 'Bulk delete branches with pattern')
+    .option('-r, --rename', `Rename current branch`)
+    .option('-d, --delete <string>', `${chalk.red('Delete')} branch <string>`)
+    .option('-s, --search <string>', `Search <string> in local branches`)
+    .option('-b, --branches', `Show local branches`)
+    .option('-D, --delete-bulk <pattern>', `Bulk ${chalk.red('delete')} branches with pattern`)
+    .option('-z, --create-commit [message]', `Create commit with [message] or create commit with ${chalk.white.bgMagenta.bold('RANDOM')} message`)
     .parse(process.argv);
 
 if (program.create) return createBranchName('create')
