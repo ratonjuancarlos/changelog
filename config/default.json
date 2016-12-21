@@ -163,7 +163,7 @@
             },
             {
                 "name": "description",
-                "type":"inputText",
+                "type":"inputBranchName",
                 "mandatory": true,
                 "text":"Description",
                 "filter": true
@@ -171,3 +171,8 @@
         ]
     }
 }
+
+
+
+
+
