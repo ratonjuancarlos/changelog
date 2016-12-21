@@ -4,6 +4,7 @@ var inquirer = require('inquirer');
 var shell = require('shelljs');
 var manageBranch = require('./lib/manageBranch');
 var createBranchName = require('./lib/createBranchName');
+var commiter = require('./lib/commiter');
 var types = require('./lib/promptTypes');
 var config = require('config');
 var pjson = require('./package.json');
@@ -22,6 +23,7 @@ program
     .option('-s, --search <string>', 'Search <string> in local branches')
     .option('-b, --branches', 'Show local branches')
     .option('-D, --delete-bulk <pattern>', 'Bulk delete branches with pattern')
+    .option('-z, --create-commit [message]', 'Bulk delete branches with pattern')
     .parse(process.argv);
 
 if (program.create) return createBranchName('create')
@@ -30,3 +32,4 @@ if (program.search) shell.exec(`git branch | grep -i "${program.search}"`).stdou
 if (program.branches) shell.exec(`git branch`).stdout
 if (program.delete) shell.exec(`${manageBranch('delete')}${program.delete}`, { silent: true }).stdout
 if (program.deleteBulk) shell.exec(`${manageBranch('deleteBulk')[0]} ${program.deleteBulk} ${manageBranch('deleteBulk')[1]}`, { silent: true }).stdout
+if (program.createCommit) shell.exec(`${commiter(program.createCommit)}`, { silent: true }).stdout
