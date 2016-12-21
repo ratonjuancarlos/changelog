@@ -19,10 +19,14 @@ program
     .option('-c, --create', `Create a new branch from ${config.get('config.createBranchFrom.remote')}/${config.get('config.createBranchFrom.branch')}`)
     .option('-r, --rename', 'Rename current branch')
     .option('-d, --delete <string>', 'Delete branch <string>')
-    .option('-s, --search [string]', 'Show local branches or search [string] in local branches', '')
+    .option('-s, --search <string>', 'Search <string> in local branches')
+    .option('-b, --branches', 'Show local branches')
+    .option('-D, --delete-bulk <pattern>', 'Bulk delete branches with pattern')
     .parse(process.argv);
 
 if (program.create) return createBranchName('create')
 if (program.rename) return createBranchName('rename')
-if (program.search) return shell.exec(`git branch --list "*${program.search}*"`).stdout
-if (program.delete) return shell.exec(`${manageBranch('delete')}${program.delete}`, { silent: true }).stdout
+if (program.search) shell.exec(`git branch | grep -i "${program.search}"`).stdout
+if (program.branches) shell.exec(`git branch`).stdout
+if (program.delete) shell.exec(`${manageBranch('delete')}${program.delete}`, { silent: true }).stdout
+if (program.deleteBulk) shell.exec(`${manageBranch('deleteBulk')[0]} ${program.deleteBulk} ${manageBranch('deleteBulk')[1]}`, { silent: true }).stdout
