@@ -14,7 +14,7 @@ const commitItem =  require('./lib/commitItem');
 const styles =  require('./lib/styles');
 // const createJsonFromLog =  require('./lib/createJsonFromLog');
 
-
+var defaults = require('./config/default');
 
 
 exports.generateChangeLog = function() {
