@@ -25,6 +25,11 @@ module.exports = {
                 "name": "Feature"
             }, {
                 "order": "0",
+                "value": "ci",
+                "prefix": "ci",
+                "name": "CI"
+            }, {
+                "order": "0",
                 "value": "enhancement",
                 "prefix": "enhancement",
                 "name": "Enhancement"

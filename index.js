@@ -8,6 +8,7 @@ const shell = require('shelljs');
 
 
 const cmd =  require('./lib/gitLog');
+const cmdAng =  require('./lib/gitLogAng');
 const createJsonFromLog =  require('./lib/createJsonFromLog');
 const updateFields =  require('./lib/updateFields');
 const commitItem =  require('./lib/commitItem');
@@ -28,9 +29,11 @@ exports.generateChangeLog = function() {
     let lastCommit = shell.exec('git log -1 --pretty=format:%H', {silent:true}).stdout
 
     let gitLogs = shell.exec(cmd, {silent:true}).stdout
+    let gitLogsAng = shell.exec(cmdAng, {silent:true}).stdout
+// console.log(createJsonFromLog(gitLogsAng))
+    result = createJsonFromLog(gitLogs+gitLogsAng);
 
 
-    result = createJsonFromLog(gitLogs);
 
     stream.write(
     `<!DOCTYPE html>
