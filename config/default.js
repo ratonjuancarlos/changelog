@@ -177,7 +177,8 @@ module.exports = {
             logSince: '2.months',
             logGrep: [
                 'into develop',
-                'Merged in'
+                'Merged in',
+                'Merged '
             ]
         },
         logOptions: {
