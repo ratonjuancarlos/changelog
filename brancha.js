@@ -3,7 +3,7 @@
 const shell = require('shelljs');
 
 const manageBranch = require('./lib/brancha/manageBranch');
-const createBranchName = require('./lib/createBranchName');
+const createBranchName = require('./lib/brancha/createBranchName');
 const commiter = require('./lib/brancha/commiter');
 const config = require('config');
 const pjson = require('./package.json');
