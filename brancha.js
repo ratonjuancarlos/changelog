@@ -2,9 +2,9 @@
 
 const shell = require('shelljs');
 
-const manageBranch = require('./lib/manageBranch');
+const manageBranch = require('./lib/brancha/manageBranch');
 const createBranchName = require('./lib/createBranchName');
-const commiter = require('./lib/commiter');
+const commiter = require('./lib/brancha/commiter');
 const config = require('config');
 const pjson = require('./package.json');
 const program = require('commander');
