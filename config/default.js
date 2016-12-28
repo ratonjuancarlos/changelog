@@ -6,6 +6,12 @@ module.exports = {
     repo_url: '',
     version: 'v1.0.0',
     config: {
+        brancha: {
+            createBranchFrom: {
+                remote: 'origin',
+                branch: 'develop'
+            }
+        },
         branch: {
             "prefixSynonymous": [
                 "festure",

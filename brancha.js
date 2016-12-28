@@ -13,7 +13,7 @@ var chalk = require('chalk');
 program
     .version(pjson.version)
     .usage('[options] <string>')
-    .option('-c, --create', `Create a new branch from ${config.get('config.createBranchFrom.remote')}/${config.get('config.createBranchFrom.branch')}`)
+    .option('-c, --create', `Create a new branch from ${config.get('config.brancha.createBranchFrom.remote')}/${config.get('config.brancha.createBranchFrom.branch')}`)
     .option('-r, --rename', `Rename current branch`)
     .option('-d, --delete <string>', `${chalk.red('Delete')} branch <string>`)
     .option('-s, --search <string>', `Search <string> in local branches`)
