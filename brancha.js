@@ -1,32 +1,51 @@
 #! /usr/bin/env node
 
-var shell = require('shelljs');
-var manageBranch = require('./lib/manageBranch');
-var createBranchName = require('./lib/createBranchName');
-var commiter = require('./lib/commiter');
-var config = require('config');
-var pjson = require('./package.json');
-var program = require('commander');
-var chalk = require('chalk');
- 
+const shell = require('shelljs');
+
+const manageBranch = require('./lib/manageBranch');
+const createBranchName = require('./lib/createBranchName');
+const commiter = require('./lib/commiter');
+const config = require('config');
+const pjson = require('./package.json');
+const program = require('commander');
+const chalk = require('chalk');
 
 program
     .version(pjson.version)
     .usage('[options] <string>')
     .option('-c, --create', `Create a new branch from ${config.get('config.brancha.createBranchFrom.remote')}/${config.get('config.brancha.createBranchFrom.branch')}`)
-    .option('-r, --rename', `Rename current branch`)
+    .option('-r, --rename', 'Rename current branch')
     .option('-d, --delete <string>', `${chalk.red('Delete')} branch <string>`)
-    .option('-s, --search <string>', `Search <string> in local branches`)
-    .option('-b, --branches', `Show local branches`)
+    .option('-s, --search <string>', 'Search <string> in local branches')
+    .option('-b, --branches', 'Show local branches')
     .option('-D, --delete-bulk <pattern>', `Bulk ${chalk.red('delete')} branches with pattern`)
     .option('-z, --create-commit [message]', `Create commit with [message] or create commit with ${chalk.white.bgMagenta.bold('RANDOM')} message`)
     .parse(process.argv);
 
-if (program.create) return createBranchName('create')
-if (program.rename) return createBranchName('rename')
-if (program.search) shell.exec(`git branch | grep -i "${program.search}"`).stdout
-if (program.branches) shell.exec(`git branch`).stdout
-if (program.delete) shell.exec(`${manageBranch('delete')}${program.delete}`, { silent: true }).stdout
-if (program.deleteBulk) shell.exec(`${manageBranch('deleteBulk')[0]} ${program.deleteBulk} ${manageBranch('deleteBulk')[1]}`, { silent: true }).stdout
-if (program.createCommit) shell.exec(`${commiter(program.createCommit)}`, { silent: true }).stdout
+if (program.create) {
+  createBranchName('create');
+}
 
+if (program.rename) {
+  createBranchName('rename');
+}
+
+if (program.search) {
+  shell.exec(`git branch | grep -i "${program.search}"`).stdout;
+}
+
+if (program.branches) {
+  shell.exec('git branch').stdout;
+}
+
+if (program.delete) {
+  shell.exec(`${manageBranch('delete')}${program.delete}`, { silent: true }).stdout;
+}
+
+if (program.deleteBulk) {
+  shell.exec(`${manageBranch('deleteBulk')[0]} ${program.deleteBulk} ${manageBranch('deleteBulk')[1]}`, { silent: true }).stdout;
+}
+
+if (program.createCommit) {
+  shell.exec(`${commiter(program.createCommit)}`, { silent: true }).stdout;
+}
