@@ -35,11 +35,11 @@ if (program.search) {
 }
 
 if (program.branches) {
-  shell.exec('git branch').stdout;
+  shell.exec('git branch');
 }
 
 if (program.delete) {
-  shell.exec(`${manageBranch('delete')}${program.delete}`, { silent: true }).stdout;
+  shell.exec(`${manageBranch('delete')} ${program.delete}`, { silent: true }).stdout;
 }
 
 if (program.deleteBulk) {
