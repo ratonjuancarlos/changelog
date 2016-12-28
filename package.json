@@ -43,6 +43,7 @@
     "shelljs": "0.7.5"
   },
   "devDependencies": {
+    "cz-conventional-changelog": "1.2.0",
     "cz-jira-smart-commit": "2.0.1",
     "eslint": "3.12.2",
     "eslint-config-airbnb-base": "11.0.0",
@@ -51,7 +52,7 @@
   },
   "config": {
     "commitizen": {
-      "path": "./node_modules/cz-jira-smart-commit"
+      "path": "./node_modules/cz-conventional-changelog"
     }
   }
 }
