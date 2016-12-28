@@ -6,6 +6,7 @@ module.exports = {
     repo_url: '',
     version: 'v1.0.0',
     config: {
+        project: 'Intelligize',
         brancha: {
             createBranchFrom: {
                 remote: 'origin',

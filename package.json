@@ -1,5 +1,5 @@
 {
-  "name": "changelog",
+  "name": "brancha",
   "version": "1.0.0",
   "description": "changelog for git",
   "main": "index.js",
@@ -13,11 +13,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/ratonjuancarlos/changelog.git"
+    "url": "git+https://github.com/ratonjuancarlos/changelog.git#develop"
   },
   "keywords": [
     "git",
-    "chamgelog"
+    "changelog"
   ],
   "author": "pablo H",
   "license": "ISC",
