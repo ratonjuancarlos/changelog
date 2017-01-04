@@ -1,6 +1,6 @@
 {
   "name": "brancha",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "changelog for git",
   "main": "index.js",
   "scripts": {
