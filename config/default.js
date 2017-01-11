@@ -87,6 +87,9 @@ module.exports = {
                 "name": "Pull requests merged"
             }],
             "project": [{
+                "name": "ECT",
+                "value": "ECT"
+            },{
                 "name": "V5X",
                 "value": "V5X"
             }, {
@@ -218,3 +221,10 @@ module.exports = {
         ],
     }
 }
+
+
+
+
+
+
+
