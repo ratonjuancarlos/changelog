@@ -16,7 +16,8 @@ program
     .option('-c, --create', `Create a new branch from ${config.get('config.brancha.createBranchFrom.remote')}/${config.get('config.brancha.createBranchFrom.branch')}`)
     .option('-r, --rename', 'Rename current branch')
     .option('-d, --delete <string>', `${chalk.red('Delete')} branch <string>`)
-    .option('-s, --search <string>', 'Search <string> in local branches')
+    .option('-s, --search <string>', 'Search <string> in local branches names')
+    .option('-f, --search-message <string>', 'Search <string> in current branch commits')
     .option('-b, --branches', 'Show local branches')
     .option('-D, --delete-bulk <pattern>', `Bulk ${chalk.red('delete')} branches with pattern`)
     .option('-z, --create-commit [message]', `Create commit with [message] or create commit with ${chalk.white.bgMagenta.bold('RANDOM')} message`)
@@ -32,6 +33,10 @@ if (program.rename) {
 
 if (program.search) {
   shell.exec(`git branch | grep -i "${program.search}"`).stdout;
+}
+
+if (program.searchMessage) {
+  shell.exec(`git log --oneline --grep="${program.searchMessage}"`).stdout;
 }
 
 if (program.branches) {
